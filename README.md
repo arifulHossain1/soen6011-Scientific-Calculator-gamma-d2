@@ -32,9 +32,9 @@ The production implementation does not use Python's `math` module for Gamma, sin
 ├── .gitignore
 ├── validation_output.txt
 └── src/
-    ├── main.py
-    ├── gui.py
     ├── gamma_core.py
+    ├── gui.py
+    ├── main.py
     └── validate_gamma.py
 ```
 
