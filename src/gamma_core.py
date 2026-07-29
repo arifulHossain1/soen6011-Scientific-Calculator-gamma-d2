@@ -306,11 +306,12 @@ def power_positive(base, exponent):
 # ---------------------------------------------------------------------------
 
 def is_gamma_pole(x_value):
-    """Return True for exact real Gamma poles: 0, -1, -2, ..."""
+    """Return True only for exact poles: 0, -1, -2, ..."""
     if x_value > 0.0:
         return False
+        
     nearest = nearest_integer(x_value)
-    return abs_value(x_value - nearest) < EXACT_POLE_TOLERANCE
+    return x_value == nearest            < EXACT_POLE_TOLERANCE
 
 
 def is_near_gamma_pole(x_value):
