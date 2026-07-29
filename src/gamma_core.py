@@ -65,12 +65,24 @@ class GammaUnderflowError(GammaGuardError):
 # Manual input parsing
 # ---------------------------------------------------------------------------
 
+def text_length(text):
+    """Return string length using indexing and a manual counter."""
+    count = 0
+    while True:
+        try:
+            text[count]
+        except IndexError:
+            return count
+        count = count + 1
+
+
 def digit_value(character):
     """Return the numeric value of one decimal digit, or -1."""
     digits = "0123456789"
     value = 0
-    for digit in digits:
-        if character == digit:
+    limit = text_length(digits)
+    while value < limit:
+        if character == digits[value]:
             return value
         value = value + 1
     return -1
@@ -106,7 +118,7 @@ def parse_real(text):
 
     sign = 1.0
     index = 0
-    length = len(raw)
+    length = text_length(raw)
 
     if raw[index] == "+":
         index = index + 1
