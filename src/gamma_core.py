@@ -1,6 +1,6 @@
 """Core numerical implementation for Gamma Guard.
 
-This module contains the from-scratch numerical work for SOEN 6011 D2:
+This module contains the from-scratch numerical work for SOEN 6011:
 manual input parsing, custom exceptions, sine/exponential/logarithm
 approximations, domain checks, Lanczos evaluation, and result formatting.
 
@@ -31,7 +31,6 @@ LANCZOS_COEFFICIENTS = (
 )
 
 POLE_WARNING_TOLERANCE = 1.0e-12
-EXACT_POLE_TOLERANCE = 1.0e-15
 MAX_EXP_ARGUMENT = 709.782712893384
 MIN_EXP_ARGUMENT = -745.0
 MAX_RESULT_MAGNITUDE = 1.7976931348623157e308
@@ -91,7 +90,9 @@ def digit_value(character):
 def power_of_ten(exponent):
     """Return ten raised to an integer exponent by repeated arithmetic."""
     if exponent > 308:
-        raise InputFormatError("number is too large for double-precision input")
+        raise InputFormatError(
+            "number is too large for double-precision input"
+        )
     if exponent < -324:
         return 0.0
 
@@ -114,7 +115,9 @@ def parse_real(text):
     """Parse one finite decimal number, optionally in exponent notation."""
     raw = text.strip()
     if raw == "":
-        raise InputFormatError("enter a finite real number, such as 0.5 or -1.5")
+        raise InputFormatError(
+            "enter a finite real number, such as 0.5 or -1.5"
+        )
 
     sign = 1.0
     index = 0
@@ -154,7 +157,9 @@ def parse_real(text):
             index = index + 1
 
     if not digit_seen:
-        raise InputFormatError("enter a finite real number, such as 0.5 or -1.5")
+        raise InputFormatError(
+            "enter a finite real number, such as 0.5 or -1.5"
+        )
 
     exponent = 0
     exponent_sign = 1
@@ -190,7 +195,9 @@ def parse_real(text):
         * power_of_ten(exponent_sign * exponent)
     )
     if value > MAX_RESULT_MAGNITUDE or value < -MAX_RESULT_MAGNITUDE:
-        raise InputFormatError("input is outside the supported double-precision range")
+        raise InputFormatError(
+            "input is outside the supported double-precision range"
+        )
     return value
 
 
@@ -309,9 +316,9 @@ def is_gamma_pole(x_value):
     """Return True only for exact poles: 0, -1, -2, ..."""
     if x_value > 0.0:
         return False
-        
+
     nearest = nearest_integer(x_value)
-    return x_value == nearest            < EXACT_POLE_TOLERANCE
+    return x_value == nearest
 
 
 def is_near_gamma_pole(x_value):
