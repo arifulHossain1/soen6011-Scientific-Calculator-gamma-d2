@@ -1,5 +1,42 @@
 # Scientific Calculator — F4 Gamma Function
 
+Version
+1.1.0
+
+Run Application
+python src/main.py
+
+Run Validation
+python src/validate_gamma.py
+
+Run Unit Tests
+python -m unittest discover -s tests -v
+
+Run Flake8
+python -m flake8 src tests --count --statistics
+
+Run Pylint
+python -m pylint ...
+
+Debugger
+python -m pdb tools/debug_gamma.py
+
+
+D3 Quality Practices
+- PEP 8
+- Flake8
+- Pylint
+- pdb
+- Semantic Versioning
+- PyUnit
+- UIDP
+- Accessibility
+
+
+
+Version
+1.0.0
+
 SOEN 6011 Deliverable 2 project implementing the real-valued Gamma function, \(\Gamma(x)\), from scratch in Python with a Tkinter graphical user interface.
 
 ## Course Information
