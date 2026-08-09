@@ -30,11 +30,19 @@ def main():
         actual = gamma_lanczos(x_value)
         reference = math.gamma(x_value)
         error = relative_error(actual, reference)
+
         if error > maximum_error:
             maximum_error = error
-        status = "PASS" if error <= MAX_ALLOWED_RELATIVE_ERROR else "FAIL"
+
+        status = (
+            "PASS"
+            if error <= MAX_ALLOWED_RELATIVE_ERROR
+            else "FAIL"
+        )
+
         if status == "FAIL":
             all_passed = False
+
         print(
             f"{x_value:g}\t{actual:.15g}\t{reference:.15g}\t"
             f"{error:.3e}\t{status}"
