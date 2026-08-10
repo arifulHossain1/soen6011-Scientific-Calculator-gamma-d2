@@ -1,0 +1,369 @@
+\documentclass[final]{beamer}
+
+\usepackage[size=a0,orientation=landscape,scale=1.00]{beamerposter}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamersize{text margin left=1.18cm,text margin right=1.18cm}
+
+\definecolor{Navy}{HTML}{173F5F}
+\definecolor{DeepNavy}{HTML}{12344D}
+\definecolor{Teal}{HTML}{238A8D}
+\definecolor{Green}{HTML}{2E8B57}
+\definecolor{Orange}{HTML}{C76B20}
+\definecolor{BluePanel}{HTML}{F1F6F9}
+\definecolor{GreenPanel}{HTML}{EFF8F3}
+\definecolor{OrangePanel}{HTML}{FFF4EA}
+\definecolor{GrayPanel}{HTML}{F5F6F7}
+\definecolor{LineGray}{HTML}{CDD6DC}
+\definecolor{BodyText}{HTML}{18242D}
+
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=BodyText,bg=white}
+\setbeamercolor{block title}{fg=white,bg=Navy}
+\setbeamercolor{block body}{fg=BodyText,bg=BluePanel}
+\setbeamercolor{block title alerted}{fg=white,bg=Teal}
+\setbeamercolor{block body alerted}{fg=BodyText,bg=GreenPanel}
+\setbeamercolor{block title example}{fg=white,bg=Green}
+\setbeamercolor{block body example}{fg=BodyText,bg=GreenPanel}
+
+\setbeamerfont{block title}{size=\Large,series=\bfseries}
+\setbeamerfont{block body}{size=\normalsize}
+
+\newcommand{\StudentID}{40310663}
+
+\newcommand{\metric}[3]{%
+  \begin{tikzpicture}[baseline=(m.center)]
+    \node[fill=BluePanel,rounded corners=2pt,minimum width=0.180\textwidth,
+      minimum height=2.05cm,inner sep=0pt,align=center] (m) {%
+      {\fontsize{29}{33}\selectfont\bfseries\color{#1}#2}\\[-0.01cm]
+      {\fontsize{14}{17}\selectfont #3}%
+    };
+  \end{tikzpicture}%
+}
+\newcommand{\imgbox}[2]{%
+  \noindent\makebox[\linewidth][c]{%
+    \fcolorbox{LineGray}{white}{\includegraphics[width=0.975\linewidth,#1,keepaspectratio]{#2}}%
+  }\par
+}
+\newcommand{\capline}[1]{%
+  \vspace{0.06cm}%
+  \noindent\parbox{\linewidth}{\centering\footnotesize\color{DeepNavy}#1}\par
+  \vspace{0.08cm}%
+}
+\newcommand{\req}[2]{\textbf{#1} & #2\\}
+\newcommand{\vdivider}[1]{%
+  \begin{column}{0.007\textwidth}
+  \centering\color{LineGray!85}%
+  \raisebox{-#1}[0pt][0pt]{\rule{0.05cm}{#1}}%
+  \end{column}%
+}
+
+\begin{document}
+\begin{frame}[t]
+
+% ========================= HEADER =========================
+\begin{beamercolorbox}[wd=\textwidth,sep=0.86cm,leftskip=1.25cm,rightskip=1.25cm]{block title}
+\begin{minipage}[c]{0.67\textwidth}
+{\fontsize{57}{63}\selectfont\bfseries Gamma Calculator}\\[0.10cm]
+{\fontsize{30}{36}\selectfont Deliverable 3 -- Code Quality, UIDP, Accessibility \& Unit Testing}\\[0.08cm]
+{\fontsize{22}{27}\selectfont F4: $\Gamma(x)$ -- From-scratch Python scientific calculator}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.30\textwidth}
+\raggedleft
+{\fontsize{24}{29}\selectfont\bfseries Md. Ariful Hossain}\\[0.08cm]
+{\fontsize{18}{22}\selectfont \textbf{Student ID:} \StudentID}\\
+{\fontsize{18}{22}\selectfont SOEN 6011: Software Engineering Processes}\\
+{\fontsize{18}{22}\selectfont Summer 2026}\\[0.18cm]
+{\fontsize{14}{18}\selectfont\textbf{Repository:} arifulHossain1/\\[-0.01cm]
+soen6011-Scientific-Calculator-gamma-d2}
+\end{minipage}
+\end{beamercolorbox}
+
+\vspace{0.28cm}
+\centering
+\noindent\begin{tabular}{@{}c@{\hspace{0.55cm}}c@{\hspace{0.55cm}}c@{\hspace{0.55cm}}c@{\hspace{0.55cm}}c@{}}
+\metric{Teal}{0}{Flake8 violations} &
+\metric{Navy}{9.91/10}{Pylint score} &
+\metric{Green}{22/22}{PyUnit tests passed} &
+\metric{Orange}{v1.1.0}{D3 semantic version} &
+\metric{Teal}{$1.332\times10^{-15}$}{max relative error}
+\end{tabular}
+\par
+\vspace{0.34cm}
+
+% ========================= TOP ROW =========================
+\begin{columns}[T,totalwidth=0.970\textwidth]
+
+% -------- TOP LEFT: P7 QUALITY --------
+\begin{column}{0.306\textwidth}
+\begin{block}{D3 Problem 7 (70 marks) -- Code quality evidence}
+\small
+\renewcommand{\arraystretch}{1.13}
+\begin{tabularx}{\linewidth}{>{\bfseries\RaggedRight}p{0.23\linewidth} X}
+\req{PEP 8}{Production and test code formatted for naming, imports, spacing, wrapping and docstrings.}
+\req{Flake8}{Style conformance checked from CMD; final run reports \textbf{0 violations}.}
+\req{Debugger}{Python \texttt{pdb}: breakpoint, stepping, variable inspection and return-value inspection.}
+\req{Pylint}{Static analysis completed with a final score of \textbf{9.91/10}.}
+\req{SemVer}{D2 baseline \textbf{v1.0.0}; D3 backward-compatible feature release \textbf{v1.1.0}.}
+\end{tabularx}
+\end{block}
+
+\vspace{0.20cm}
+\begin{alertblock}{Flake8 -- enlarged PEP 8 evidence}
+\imgbox{height=5.6cm}{assets/flake8.png}
+\capline{Command: \texttt{python -m flake8 src tests --count --statistics}; final result: \textbf{0}.}
+\end{alertblock}
+
+\vspace{0.20cm}
+\begin{block}{Pylint -- enlarged static-analysis evidence}
+\imgbox{height=7.2cm}{assets/pylint.png}
+\vspace{0.08cm}
+\scriptsize
+\noindent\textbf{Remaining Pylint messages reviewed and retained:}\par
+\vspace{0.03cm}
+\begin{itemize}\setlength\itemsep{0.02cm}\setlength\parskip{0pt}\setlength\parsep{0pt}
+\item \texttt{R0912/R0915}: explicit parser branches/statements are retained because the from-scratch parser is intentionally transparent and traceable.
+\item \texttt{R1731}: the explicit running-maximum \texttt{if} in validation is retained for readability; this is a refactoring suggestion, not a correctness defect.
+\end{itemize}
+\vspace{-0.03cm}
+\noindent\textbf{Decision:} retain correct, requirement-aligned code rather than change it only to obtain 10/10.\par
+\end{block}
+
+\vspace{0.20cm}
+\begin{block}{pdb -- what was debugged and what it confirmed}
+\imgbox{height=10.5cm}{assets/pdb.png}
+\vspace{0.08cm}
+\scriptsize
+\begin{tabularx}{\linewidth}{>{\bfseries}p{0.25\linewidth} X}
+Breakpoint & \texttt{main()} in \texttt{tools/debug\_gamma.py} (line 12 in the captured run).\\
+Commands & \texttt{b main}, \texttt{c}, \texttt{n}, \texttt{p x\_value}, \texttt{s}, \texttt{r}, \texttt{p result}, \texttt{q}.\\
+Inspected & \texttt{x\_value=-0.5}; returned result \texttt{-3.5449077018110295}.\\
+Conclusion & Confirmed that $x=-0.5$ enters \texttt{gamma\_lanczos()}, takes the $x<0.5$ Euler-reflection branch and returns the expected value. No defect was found in this session.\\
+\end{tabularx}
+\end{block}
+\end{column}
+
+\vdivider{45.0cm}
+
+% -------- TOP CENTER: UIDP --------
+\begin{column}{0.330\textwidth}
+\begin{exampleblock}{D3 Problem 7 -- UIDP radial mind map}
+\centering
+\includegraphics[width=0.99\linewidth,height=27.2cm,keepaspectratio]{uidp_mindmap.pdf}
+\vspace{0.10cm}
+\scriptsize
+\begin{tabularx}{0.98\linewidth}{>{\bfseries\RaggedRight}p{0.27\linewidth} X}
+Applied directly & User Profiling, Metaphor, Feature Exposure, State Visualization, Coherence and Safety.\\
+Partial only & Humility remains partial because no representative-user study was conducted.\\
+Mind-map style & Central topic + seven branches + compact keyword cues for each principle. [2]\\
+\end{tabularx}
+\end{exampleblock}
+
+\vspace{0.20cm}
+\begin{block}{UIDP interpretation}
+\small
+\begin{itemize}\setlength\itemsep{0.10cm}
+\item The GUI emphasizes a \textbf{simple calculator workflow}: one input, visible actions, readable output and recovery from invalid input.
+\item \textbf{Metaphor} is used lightly through a familiar form/calculator structure; \textbf{Humility} stays partial because representative-user evidence was not collected.
+\item The radial format improves readability: each principle is a branch and each branch uses only short cues rather than paragraph-style text.
+\end{itemize}
+\end{block}
+\end{column}
+
+\vdivider{45.0cm}
+
+% -------- TOP RIGHT: P8 --------
+\begin{column}{0.306\textwidth}
+\begin{exampleblock}{D3 Problem 8 (30 marks) -- PyUnit test design}
+\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\linewidth}{>{\bfseries\RaggedRight}p{0.28\linewidth} X}
+\req{Input parsing}{Decimal, negative decimal, scientific notation, empty input, alphabetic input and multiple values.}
+\req{Gamma values}{$\Gamma(1)$, $\Gamma(5)$, $\Gamma(0.5)$, $\Gamma(-0.5)$ and $\Gamma(-1.5)$.}
+\req{Domain / range}{Exact poles, negative non-integers, near-pole detection, domain exceptions and range overflow.}
+\req{User-facing output}{Direct Lanczos path, reflection path, result text and near-pole warning.}
+\req{Framework}{Python \texttt{unittest} (PyUnit), executed with test discovery from CMD.}
+\end{tabularx}
+\vspace{0.08cm}
+\begin{center}
+\fcolorbox{Green}{white}{\parbox{0.88\linewidth}{\centering\bfseries\Large 22 tests executed -- 22 passed -- 0 failures}}
+\end{center}
+\end{exampleblock}
+
+\vspace{0.20cm}
+\begin{block}{Representative unit-test cases and oracles}
+\scriptsize
+\renewcommand{\arraystretch}{1.17}
+\begin{tabularx}{\linewidth}{>{\bfseries}p{0.17\linewidth} p{0.22\linewidth} p{0.25\linewidth} X}
+\toprule
+Test & Input & Expected & Test oracle\\
+\midrule
+Positive integer & $5$ & $24$ & Mathematical identity $\Gamma(n)=(n-1)!$.\\
+Reflection case & $-0.5$ & $-2\sqrt{\pi}\approx-3.544907701811032$ & DLMF Gamma identities / reflection behavior.\\
+Domain error & $0$ & \texttt{GammaDomainError} & Gamma has poles at nonpositive integers.\\
+\bottomrule
+\end{tabularx}
+\vspace{0.08cm}
+\textbf{Distinction:} these are part of the \textbf{22 automated unit tests}. They are separate from the independent eight-case numerical validation below.
+\end{block}
+
+\vspace{0.20cm}
+\begin{block}{PyUnit execution evidence}
+\imgbox{height=10.7cm}{assets/unittest.png}
+\capline{Verbose discovery ends with \textbf{Ran 22 tests} and \textbf{OK}.}
+\end{block}
+
+\vspace{0.20cm}
+\begin{alertblock}{Accuracy evidence -- separate eight-case validation}
+\scriptsize
+\textbf{Independent oracle:} Python standard-library \texttt{math.gamma()} in \texttt{src/validate\_gamma.py}; it is not imported by the production calculator. [11]
+\par
+\textbf{Validation set:} $\{0.1,0.5,1,1.5,2.5,5,-0.5,-1.5\}$. The reported \textbf{$1.332\times10^{-15}$} is the \textbf{maximum relative error over these eight cases}, below the required $10^{-10}$ threshold.
+\vspace{0.08cm}
+\imgbox{height=8.4cm}{assets/validation.png}
+\capline{Separate regression validation: all eight reference cases PASS.}
+\end{alertblock}
+\end{column}
+\end{columns}
+
+\vspace{0.32cm}
+\noindent\makebox[\textwidth][c]{\color{LineGray!85}\rule{0.970\textwidth}{0.075cm}}
+\vspace{0.30cm}
+
+% ========================= BOTTOM ROW =========================
+\begin{columns}[T,totalwidth=0.970\textwidth]
+
+% -------- BOTTOM LEFT: SEMVER + REPO --------
+\begin{column}{0.306\textwidth}
+\begin{block}{Semantic Versioning -- why v1.0.0 $\rightarrow$ v1.1.0}
+\small
+\begin{center}
+\begin{tikzpicture}[>=Latex,node distance=0.55cm]
+\node[draw=Navy,very thick,rounded corners=5pt,fill=BluePanel,text width=5.6cm,minimum height=1.75cm,align=center] (v1) {\Large\textbf{v1.0.0}\\\normalsize D2 stable baseline};
+\node[draw=Teal,very thick,rounded corners=5pt,fill=GreenPanel,text width=8.1cm,minimum height=2.45cm,align=center,right=0.75cm of v1] (features) {\bfseries Backward-compatible user-visible D3 additions\\\scriptsize keyboard shortcuts; focus return/selection; clearer status/help text; scrollable history; accessibility improvements};
+\node[draw=Orange,very thick,rounded corners=5pt,fill=OrangePanel,text width=5.6cm,minimum height=1.75cm,align=center,right=0.75cm of features] (v11) {\Large\textbf{v1.1.0}\\\normalsize D3 release};
+\draw[->,very thick,Navy] (v1) -- (features);
+\draw[->,very thick,Navy] (features) -- (v11);
+\end{tikzpicture}
+\end{center}
+\begin{tabularx}{\linewidth}{>{\bfseries\RaggedRight}p{0.27\linewidth} X}
+Why MINOR? & The release adds backward-compatible, user-visible GUI/accessibility features. Internal testing/tooling alone is \emph{not} the sole justification.\\
+Why not PATCH? & More than a bug fix: new keyboard/focus/history/status behavior is visible to users.\\
+Why not MAJOR? & No incompatible change to the D2 Gamma algorithm or expected calculation workflow.\\
+\end{tabularx}
+\vspace{0.07cm}
+\imgbox{height=4.8cm}{assets/semantic_version.png}
+\capline{Release evidence: \textbf{v1.0.0} preserves the D2 baseline; \textbf{v1.1.0} identifies the backward-compatible D3 feature release.}
+\end{block}
+
+\vspace{0.18cm}
+\begin{block}{GitHub repository \& final source structure}
+\scriptsize
+\textbf{Repository:} \texttt{github.com/arifulHossain1/}\\[-0.02cm]
+\hspace*{2.1cm}\texttt{soen6011-Scientific-Calculator-gamma-d2}
+\vspace{0.07cm}
+\begin{tabularx}{\linewidth}{>{\ttfamily\bfseries}p{0.37\linewidth} X}
+src/gamma\_core.py & Parsing, numerical helpers, exceptions and Gamma calculation.\\
+src/gui.py & Tkinter interface, keyboard/focus behavior, status and history.\\
+src/main.py & IDE-independent entry point.\\
+src/validate\_gamma.py & Separate numerical validation using \texttt{math.gamma()} as oracle.\\
+src/version.py & Semantic version identifier (1.1.0).\\
+tests/test\_gamma\_core.py & 22 PyUnit tests.\\
+tools/debug\_gamma.py & pdb debugging driver.\\
+\end{tabularx}
+\end{block}
+\end{column}
+
+\vdivider{25.6cm}
+
+% -------- BOTTOM CENTER: ACCESSIBILITY --------
+\begin{column}{0.330\textwidth}
+\begin{alertblock}{Accessibility Features and Evidence}
+\small
+\textbf{Scope:} the GUI \emph{aims} to be accessible; no formal representative-user, screen-reader or assistive-technology study is claimed.
+\vspace{0.08cm}
+\renewcommand{\arraystretch}{1.13}
+\begin{tabularx}{\linewidth}{>{\bfseries\RaggedRight}p{0.31\linewidth} X}
+Keyboard access & Enter / Alt+C = Calculate; Esc / Alt+L = Clear.\\
+Focus management & Focus starts and returns to input; text is selected after success/error for rapid correction.\\
+Readability & Explicit label, larger history font, scrollbar, visible status region.\\
+No color-only meaning & Results, warnings and errors are communicated in text.\\
+Safety / recovery & Invalid input produces a corrective message without terminating the program.\\
+Metaphor & Familiar form/calculator structure: input field, Calculate/Clear buttons, status and history.\\
+\end{tabularx}
+\vspace{0.10cm}
+\begin{columns}[T,totalwidth=\linewidth]
+\begin{column}{0.495\linewidth}
+\centering
+\includegraphics[width=\linewidth,height=8.6cm,keepaspectratio]{assets/gui_success.png}\par
+\vspace{0.05cm}
+\noindent\parbox{\linewidth}{\centering\scriptsize\textbf{Successful use:} $x=-0.5$ shows the result, reflection method and completion status.}\par
+\end{column}
+\begin{column}{0.495\linewidth}
+\centering
+\includegraphics[width=\linewidth,height=8.6cm,keepaspectratio]{assets/gui_error.png}\par
+\vspace{0.05cm}
+\noindent\parbox{\linewidth}{\centering\scriptsize\textbf{Recoverable error:} invalid text gives a corrective message and visible status.}\par
+\end{column}
+\end{columns}
+\end{alertblock}
+
+\vspace{0.18cm}
+\begin{block}{D2 numerical core preserved}
+\scriptsize
+D3 changes improve software quality and interaction without replacing the selected mathematics. Production still uses the \textbf{Lanczos approximation} with \textbf{Euler reflection} and project-defined subordinate numerical helpers. The independent \texttt{math.gamma()} oracle remains isolated to validation. [9--11]
+\end{block}
+\end{column}
+
+\vdivider{25.6cm}
+
+% -------- BOTTOM RIGHT: GAI / TRACEABILITY / REFS --------
+\begin{column}{0.306\textwidth}
+\begin{alertblock}{GAI / CASTROFF -- Problems 7 and 8}
+\footnotesize
+\textbf{Framework source:} CASTROFF = Constraints, Audience, Structure, Tone, Role, Output Format, Focus, Function. [12] \textbf{Tool:} ChatGPT. Tool screenshots and executed tests are the evidence; GAI was used for planning/review, not to fabricate results.
+\vspace{0.08cm}
+
+\textbf{Problem 7 -- quality, UIDP and accessibility}\\
+\textbf{Compact prompt example:} ``Review my D2 Gamma Calculator for D3. Preserve the from-scratch numerical behavior; guide PEP 8/Flake8/Pylint/pdb/SemVer work, map the course UIDP principles, and improve accessibility with evidence suitable for the poster.''\\
+\textbf{CASTROFF:} C = preserve D2 + meet P7; A = SOEN 6011 evaluator; S = stepwise code/tool/evidence workflow; T = academic/verifiable; R = Python quality + UI reviewer; O = revised code/commands/evidence; F = P7 quality/UIDP/accessibility; Function = defensible D3 release.\\
+\textbf{Output summary:} code-quality workflow, accessibility changes, UIDP mapping and poster evidence plan.\\
+\textbf{Decision:} \textcolor{Green}{\bfseries Accepted} PEP 8/tool workflow + keyboard/focus/readability changes; \textcolor{Teal}{\bfseries Revised} UIDP mapping and SemVer rationale after requirements review; \textcolor{Orange}{\bfseries Rejected} treating tool/test/reviewer evidence as representative-user input or changing correct code only to chase Pylint 10/10.
+
+\vspace{0.10cm}
+\textbf{Problem 8 -- unit testing}\\
+\textbf{Compact prompt example:} ``Create PyUnit tests for the actual Gamma core covering parsing, direct Lanczos, Euler reflection, poles/near-poles, range errors, exceptions and user-facing output; keep independent numerical validation separate.''\\
+\textbf{CASTROFF:} C = test real code with \texttt{unittest}; A = evaluator/maintainer; S = grouped tests + discovery; T = precise/repeatable; R = test-design assistant; O = runnable tests + evidence; F = Gamma behavior/errors; Function = satisfy P8 with automated tests.\\
+\textbf{Output summary:} grouped test suite covering parsing, Gamma values, domain/range and user-facing service.\\
+\textbf{Decision:} \textcolor{Green}{\bfseries Accepted} grouped suite; \textcolor{Teal}{\bfseries Revised} with explicit oracles and a clear 22-unit-test vs 8-validation-case distinction; \textcolor{Orange}{\bfseries Rejected} any use of \texttt{math.gamma()} as production logic.
+\end{alertblock}
+
+\vspace{0.14cm}
+\begin{block}{D3 requirement coverage}
+\scriptsize
+\textbf{P7:} PEP 8 + Flake8 snapshot; pdb snapshot + conclusion; Pylint snapshot + remaining-message rationale; Semantic Versioning; radial UIDP mind map using the course principles; Accessibility Features and Evidence.\\
+\textbf{P8:} 22 PyUnit tests + framework execution; representative cases/oracles; separate eight-case numerical validation.\\
+\textbf{Consistency check:} final repository snapshot was re-run locally: \textbf{22/22 unit tests passed} and the \textbf{eight-case validation passed with max error $1.332\times10^{-15}$}.
+\end{block}
+
+\vspace{0.14cm}
+\begin{block}{References}
+\small
+[1] SOEN 6011, \emph{Project Description}, Summer 2026; [2] P. Kamthan, \emph{User Interface Design Principles}, course notes, 2026; [3] Python Software Foundation, \emph{PEP 8}; [4] PyCQA, \emph{Flake8}; [5] PyCQA, \emph{Pylint}; [6] Python Software Foundation, \emph{pdb}; [7] Python Software Foundation, \emph{unittest}.\\[0.05cm]
+[8] \emph{Semantic Versioning 2.0.0}; [9] C. Lanczos, ``A precision approximation of the gamma function,'' 1964; [10] NIST DLMF, Ch. 5, \emph{Gamma Function} (including reflection/domain behavior); [11] Python \texttt{math.gamma} validation oracle; [12] H. Tavakoli, \emph{Prompt Engineering for Everyone}, Ch. 6: CASTROFF, 2026; [13] Dreuw and Deselaers, \emph{beamerposter}.
+\end{block}
+\end{column}
+\end{columns}
+
+\end{frame}
+\end{document}
